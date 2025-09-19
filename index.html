@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Генератор алфавита по теме</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "animejs": "https://esm.sh/animejs@3.2.2/lib/anime.es.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Генератор алфавита</h1>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <label for="prompt" class="label">Тема / промпт</label>
+      <textarea id="prompt" rows="3" placeholder="Например: «космос» или «средневековое фэнтези»"></textarea>
+
+      <div class="row">
+        <div class="group">
+          <label class="label">Алфавит</label>
+          <div class="segmented" role="tablist" aria-label="Алфавит">
+            <button class="seg" data-alphabet="ru" aria-selected="true">А–Я</button>
+            <button class="seg" data-alphabet="en" aria-selected="false">A–Z</button>
+          </div>
+        </div>
+        <div class="group">
+          <label class="label">Модель</label>
+          <div class="segmented" role="tablist" aria-label="Модель">
+            <button class="seg model" data-model="1.0" aria-selected="true">1.0 (текст)</button>
+            <button class="seg model" data-model="2.0" aria-selected="false">2.0 (фото+текст)</button>
+            <button class="seg model" data-model="2.5" aria-selected="false">2.5 (фото+текст+озвучка)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="group">
+          <label class="label">Стиль</label>
+          <div class="segmented" role="tablist" aria-label="Стиль">
+            <button class="seg tone" data-tone="soft" aria-selected="true">адекватная</button>
+            <button class="seg tone" data-tone="hard" aria-selected="false">жесткая</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="generateBtn" class="primary">Сгенерировать</button>
+        <button id="exportBtn">Экспорт .txt</button>
+        <button id="copyBtn">Копировать</button>
+      </div>
+    </section>
+
+    <section id="status" class="status" aria-live="polite"></section>
+
+    <section id="grid" class="grid" aria-label="Результат алфавита"></section>
+  </main>
+
+  <footer class="footer">
+    <span class="mono">Tip:</span> Локальный AI — без серверов и ключей.
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
